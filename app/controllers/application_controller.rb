@@ -64,6 +64,8 @@ class ApplicationController < ActionController::Base
     mixed_array = params["_json"].map do |el|
       [[el["pos"]-el["distance"], 0].max, el["pos"]+el["distance"]]
     end
+    puts "mixed array"
+    p mixed_array
     camps_locations = []
     mixed_array.each do |el|
       flag = false
@@ -74,7 +76,7 @@ class ApplicationController < ActionController::Base
           if el[1] <= sub_el[1]
             sub_el[1] = el[1]
           end
-        elsif el[0] <= sub_el[0]
+        elsif el[0] < sub_el[0]
           if el[1] <= sub_el[1]
             flag = true
             sub_el[1] = el[1]
@@ -82,6 +84,8 @@ class ApplicationController < ActionController::Base
             flag = true
           end
         end
+        puts "camps locations"
+        p camps_locations
         camps_locations.push(el) unless flag
       end
     end
