@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prime_sum
-    render json: [find_prime_component(params["input"])]
+    render json: find_prime_component(params["input"])
   end
 
   private
