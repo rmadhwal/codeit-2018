@@ -2,7 +2,8 @@ require 'json'
 require 'prime'
 require "net/http"
 require "open-uri"
-require "mini_magick"
+require 'exifr'
+require 'exif'
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
@@ -101,11 +102,10 @@ class ApplicationController < ActionController::Base
     params["_json"].each do |img|
       path = img["path"]
       image = nil
-      open(path) do |file|
-        image = MiniMagick::Image.from_blob(file.read) rescue nil
+      open('image.jpg', 'wb') do |file|
+        file << open(path).read
       end
-      puts image["EXIF:datetime"] if image
-
+      puts EXIFR::JPEG.new('image.jpg')
     end
   end
 
