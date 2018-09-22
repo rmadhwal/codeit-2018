@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   def minimum_distance
     xaxis = params
     puts "myinput bla"
-    p xaxis
+    puts ("yoyo" + xaxis[0])
   end
 
   private
