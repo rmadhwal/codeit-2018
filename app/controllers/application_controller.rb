@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
   def minimum_distance
     xaxis = params["_json"].sort
-    int diff = 9999999999999
+    diff = 9999999999999
     xaxis.each.with_index do |el, index|
       next if index == (xaxis.size - 1)
       if(xaxis[index+1] - el < diff)
