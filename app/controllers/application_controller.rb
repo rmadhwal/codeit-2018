@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     s1[0] = 1
     s2[0] = 1
     s=0
+    beginning_time = Time.now
     for j in 0..n-1 do
       s+=array1[j].to_i
       i = s
@@ -21,6 +22,8 @@ class ApplicationController < ActionController::Base
         i = i - 1
       end
     end
+    end_time = Time.now
+    puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
     t=0
     for k in 0..n-1 do
       t+=array2[k].to_i
@@ -30,6 +33,7 @@ class ApplicationController < ActionController::Base
         i = i - 1
       end
     end
+    beginning_time = Time.now
     result = s1.map.with_index do |el, index|
       total = 0
       for i in (-1*d)..d
@@ -37,6 +41,8 @@ class ApplicationController < ActionController::Base
       end
       el*total
     end.inject(0, :+)
+    end_time = Time.now
+    puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
     return {"result": (result) }
   end
 end
