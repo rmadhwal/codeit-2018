@@ -2,7 +2,7 @@ require 'json'
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   def two_dinosaurs
-    mod_val = 100000123
+    mod_val = 1000000123
     n = params["number_of_types_of_food"]
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
