@@ -2,7 +2,7 @@ require 'json'
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   def two_dinosaurs
-    mod_val = 1000000123
+    mod_val = 100000123
     n = params["number_of_types_of_food"]
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
@@ -44,6 +44,6 @@ class ApplicationController < ActionController::Base
     result = s2.map.with_index do |el, index|
       (el * (summation_array1[[sum1+1, index+d+1].min] - summation_array1[[0, [index - d, sum1 + 1].min].max]+mod_val)%mod_val)%mod_val
     end.inject(0, :+)
-    return {"result": (result % 100000007) }
+    render json: {"result": (result % mod_val) }
   end
 end
