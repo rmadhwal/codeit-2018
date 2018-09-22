@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def minimum_distance
-    xaxis = params
+    xaxis = params["_json"]
     puts "myinput bla"
     puts ("yoyo" + xaxis[0])
   end
