@@ -44,6 +44,6 @@ class ApplicationController < ActionController::Base
     result = s2.map.with_index do |el, index|
       (el * (summation_array1[[sum1+1, index+d+1].min] - summation_array1[[0, [index - d, sum1 + 1].min].max]))
     end.inject(0, :+)
-    return {"result": (result % 100000123) }
+    return {"result": (result % 100000007) }
   end
 end
