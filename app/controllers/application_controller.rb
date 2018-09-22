@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
     d = params["maximum_difference_for_calories"]
-    sum_1 = 0
-    sum_2 = 0
+    sum1 = 0
+    sum2 = 0
     array1.each do |el|
       sum1 += el
     end
