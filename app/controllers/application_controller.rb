@@ -48,6 +48,12 @@ class ApplicationController < ActionController::Base
     render json: find_prime_component(params["input"])
   end
 
+  def minimum_distance
+    xaxis = params
+    puts "myinput bla"
+    p xaxis
+  end
+
   private
 
   def find_prime_component(x)
