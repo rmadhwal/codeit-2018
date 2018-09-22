@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
         i = i - 1
       end
     end
+    t=0
     for k in 0..n-1 do
       t+=array2[k].to_i
       i = t
