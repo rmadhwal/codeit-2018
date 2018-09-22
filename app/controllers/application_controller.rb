@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       s+=array1[j].to_i
       i = s
       while i>=array1[j].to_i do
-        s1[i]=(s1[i]+s1[i-array1[j].to_i])
+        s1[i]=(s1[i]+s1[i-array1[j].to_i])%100000123
         i = i - 1
       end
     end
@@ -29,20 +29,21 @@ class ApplicationController < ActionController::Base
       t+=array2[k].to_i
       i = t
       while i>=array2[k].to_i do
-        s2[i]=(s2[i]+s2[i-array2[k].to_i])
+        s2[i]=(s2[i]+s2[i-array2[k].to_i])%100000123
         i = i - 1
       end
     end
     beginning_time = Time.now
-    result = s1.map.with_index do |el, index|
-      total = 0
-      for i in (-1*d)..d
-        total += s2[index+i] if (index+i>=0 && index+i<=sum2)
+    summation_array1 = Array.new(sum1+2, 0)
+    summation_array1.each.with_index do |_, index|
+      if index != 0
+        summation_array1[index] = s1[index-1] + summation_array1[index-1]
       end
-      el*total
-    end.inject(0, :+)
+    end
     end_time = Time.now
-    puts "Time elapsed 2 #{(end_time - beginning_time)*1000} milliseconds"
-    return {"result": (result) }
+    result = s2.map.with_index do |el, index|
+      (el * (summation_array1[[sum1+1, index+d+1].min] - summation_array1[[0, [index - d, sum1 + 1].min].max])%100000123)%100000123
+    end.inject(0, :+)
+    return {"result": (result % 100000123) }
   end
 end
