@@ -60,7 +60,39 @@ class ApplicationController < ActionController::Base
     render json: {"answer": diff }
   end
 
+  def minimum_camps
+    mixed_array = params["_json"].map do |el|
+      [[el["pos"]-el["distance"], 0].max, el["pos"]+el["distance"]]
+    end
+    camps_locations = []
+    mixed_array.each do |el|
+      camps_locations.each do |sub_el|
+        if sub_el[0] <= el[0] && el[0] <= sub_el[1]
+          flag = true
+          sub_el[0] = el[0]
+          if el[1] <= sub_el[1]
+            sub_el[1] = el[1]
+          end
+        elsif el[0] <= sub_el[0]
+          if el[1] <= sub_el[1]
+            flag = true
+            sub_el[1] = el[1]
+          elsif sub_el[1] <= el[1]
+            flag = true
+          end
+        end
+      end
+      camps_locations.push(el) unless flag
+    end
+    render json: {"answer": camps_locations.size }
+  end
+
   private
+
+  def find_valid_lication(el, camps_locations)
+    flag = false
+
+  end
 
   def find_prime_component(x)
     for z in (x).downto(0)
