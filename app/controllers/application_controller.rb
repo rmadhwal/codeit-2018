@@ -66,9 +66,10 @@ class ApplicationController < ActionController::Base
     end
     camps_locations = []
     mixed_array.each do |el|
-      flag = true
+      flag = false
       camps_locations.each do |sub_el|
         if sub_el[0] <= el[0] && el[0] <= sub_el[1]
+          flag = true
           sub_el[0] = el[0]
           if el[1] <= sub_el[1]
             sub_el[1] = el[1]
@@ -81,18 +82,14 @@ class ApplicationController < ActionController::Base
             flag = true
           end
         end
+        camps_locations.push(el) unless flag
       end
-      camps_locations.push(el) unless flag
     end
     render json: {"answer": camps_locations.size }
   end
 
   private
 
-  def find_valid_lication(el, camps_locations)
-    flag = false
-
-  end
 
   def find_prime_component(x)
     for z in (x).downto(0)
