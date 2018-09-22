@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
     d = params["maximum_difference_for_calories"]
+    failing_combination = []
     number_of_ways = 0
     number_of_variations = (2**n)-1
     for x in 0..number_of_variations do
@@ -26,9 +27,12 @@ class ApplicationController < ActionController::Base
         end
         if (suma-sumb).abs <= d
           number_of_ways = number_of_ways + 1
+        else
+          failing_combination.push({x1=>})
         end
       end
     end
+    puts(array1.class)
     return {"result": ((number_of_ways) % 100000123) }
   end
 end
