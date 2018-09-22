@@ -66,9 +66,9 @@ class ApplicationController < ActionController::Base
     end
     camps_locations = []
     mixed_array.each do |el|
+      flag = true
       camps_locations.each do |sub_el|
         if sub_el[0] <= el[0] && el[0] <= sub_el[1]
-          flag = true
           sub_el[0] = el[0]
           if el[1] <= sub_el[1]
             sub_el[1] = el[1]
