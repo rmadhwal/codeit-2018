@@ -1,5 +1,6 @@
+require 'json'
 class ApplicationController < ActionController::Base
-  def hello_world
-    render plain: 'Hello, World!'
+  def two_dinosaurs(jsonPayload)
+    puts JSON.pretty_generate(jsonPayload)
   end
 end

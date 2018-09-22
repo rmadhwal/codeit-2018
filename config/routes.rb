@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/hello_world' => 'application#hello_world'
+  post '/two-dinosaurs' => 'application#two_dinosaurs'
 end
