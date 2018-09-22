@@ -84,10 +84,10 @@ class ApplicationController < ActionController::Base
             flag = true
           end
         end
-        puts "camps locations"
-        p camps_locations
-        camps_locations.push(el) unless flag
       end
+      puts "camps locations"
+      p camps_locations
+      camps_locations.push(el) unless flag
     end
     render json: {"answer": camps_locations.size }
   end
