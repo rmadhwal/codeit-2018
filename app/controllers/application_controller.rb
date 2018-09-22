@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
     d = params["maximum_difference_for_calories"]
-    puts array1[0].class.name
+    # puts array1.class.name
     return {"result": ( 100000123) }
   end
 end
