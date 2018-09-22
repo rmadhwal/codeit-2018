@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       end
     end
     end_time = Time.now
-    puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+    puts "Time elapsed 1 #{(end_time - beginning_time)*1000} milliseconds"
     t=0
     for k in 0..n-1 do
       t+=array2[k].to_i
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
       el*total
     end.inject(0, :+)
     end_time = Time.now
-    puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+    puts "Time elapsed 2 #{(end_time - beginning_time)*1000} milliseconds"
     return {"result": (result) }
   end
 end
