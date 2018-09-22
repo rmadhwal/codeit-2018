@@ -49,9 +49,15 @@ class ApplicationController < ActionController::Base
   end
 
   def minimum_distance
-    xaxis = params["_json"]
-    puts "myinput bla"
-    puts ("yoyo" + xaxis[0])
+    xaxis = params["_json"].sort
+    int diff = 9999999999999
+    xaxis.each.with_index do |el, index|
+      next if index == (xaxis.size - 1)
+      if(xaxis[index+1] - el < diff)
+        diff = xaxis[index+1] - el
+      end
+    end
+    render json: {"answer": diff }
   end
 
   private
