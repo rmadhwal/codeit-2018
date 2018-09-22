@@ -6,35 +6,21 @@ class ApplicationController < ActionController::Base
     array1 = params["calories_for_each_type_for_raphael"]
     array2 = params["calories_for_each_type_for_leonardo"]
     d = params["maximum_difference_for_calories"]
-    sum1 = 0
-    sum2 = 0
-    array1.each do |el|
-      sum1 += el
-    end
-    array2.each do |el|
-      sum2 += el
-    end
+    sum1 = array1.inject(0, :+)
+    sum2 = array2.inject(0, :+)
     s1 = Array.new(sum1+1, 0)
     s2 = Array.new(sum2+1, 0)
-    s1[0] = 1
-    s2[0] = 1
-    s=0
-    for j in 0..n do
-        s+=array1[j]
-        i = s
-        while i>=a[j] do
-          x[i]=(x[i]+x[i-a[j]])
-          i = i - 1
-        end
+    for i in 0..(2**n-1) do
+      sum = i.to_s(2).rjust(n, "0").split("").map.with_index do |el, index|
+        el == "1" ? array1[index] : 0
+      end.inject(0, :+)
+      s1[sum] += 1
     end
-    t=0
-    for k in 0..n do
-      t+=array2[k]
-      i = t
-      while i>=a[k] do
-        x[i]=(x[i]+x[i-a[k]])
-        i = i - 1
-      end
+    for i in 0..(2**n-1) do
+      sum = i.to_s(2).rjust(n, "0").split("").map.with_index do |el, index|
+        el == "1" ? array2[index] : 0
+      end.inject(0, :+)
+      s2[sum] += 1
     end
     result = s1.map.with_index do |el, index|
       total = 0
