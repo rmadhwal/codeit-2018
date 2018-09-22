@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
     sum2 = array2.inject(0, :+)
     s1 = Array.new(sum1+1, 0)
     s2 = Array.new(sum2+1, 0)
+    s1[0] = 1
+    s2[0] = 1
+    s=0
     for j in 0..n-1 do
       s+=array1[j].to_i
       i = s
@@ -29,7 +32,7 @@ class ApplicationController < ActionController::Base
     result = s1.map.with_index do |el, index|
       total = 0
       for i in (-1*d)..d
-        total += s2[index+i] if (index+i>=0 && index+i<n)
+        total += s2[index+i] if (index+i>=0 && index+i<=sum2)
       end
       el*total
     end.inject(0, :+)
