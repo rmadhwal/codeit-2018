@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    puts(array1[0].class)
+    puts(array1[0].class.name)
     return {"result": ((number_of_ways) % 100000123) }
   end
 end
