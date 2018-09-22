@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
             sub_el[1] = el[1]
           end
         elsif el[0] < sub_el[0]
-          if el[1] <= sub_el[1]
+          if el[1] <= sub_el[1] && sub_el[0] <= el[1]
             flag = true
             sub_el[1] = el[1]
           elsif sub_el[1] <= el[1]
