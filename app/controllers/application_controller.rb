@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       s+=array1[j].to_i
       i = s
       while i>=array1[j].to_i do
-        s1[i]=(s1[i]+s1[i-array1[j].to_i])%mod_val
+        s1[i]=(s1[i]+s1[i-array1[j].to_i])
         i = i - 1
       end
     end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       t+=array2[k].to_i
       i = t
       while i>=array2[k].to_i do
-        s2[i]=(s2[i]+s2[i-array2[k].to_i])%mod_val
+        s2[i]=(s2[i]+s2[i-array2[k].to_i])
         i = i - 1
       end
     end
