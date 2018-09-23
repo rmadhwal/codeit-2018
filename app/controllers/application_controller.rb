@@ -2,8 +2,6 @@ require 'json'
 require 'prime'
 require "net/http"
 require "open-uri"
-require 'exifr'
-require 'exif'
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
