@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
     summation_array1.each.with_index do |_, index|
       next if index != 0
       summation_array1[index] = (s1[index-1] + summation_array1[index-1])%mod_val
-      end
     end
     result = s2.map.with_index do |el, index|
       (el * (summation_array1[[sum1+1, index+d+1].min] - summation_array1[[0, [index - d, sum1 + 1].min].max]+mod_val)%mod_val)%mod_val
