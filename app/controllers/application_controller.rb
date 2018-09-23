@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     end
     summation_array1 = Array.new(sum1+2, 0)
     summation_array1.each.with_index do |_, index|
-      next if index != 0
+      next if index == 0
       summation_array1[index] = (s1[index-1] + summation_array1[index-1])%mod_val
     end
     result = s2.map.with_index do |el, index|
