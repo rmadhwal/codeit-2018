@@ -97,18 +97,6 @@ class ApplicationController < ActionController::Base
     render json: {"answer": camps_locations.size }
   end
 
-  def images_gps
-    out = []
-    params["_json"].each do |img|
-      path = img["path"]
-      image = nil
-      open('image.jpg', 'wb') do |file|
-        file << open(path).read
-      end
-      puts EXIFR::JPEG.new('image.jpg')
-    end
-  end
-
   private
 
 
